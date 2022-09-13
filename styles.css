@@ -58,3 +58,22 @@ button {
 #loading-text {
     margin-bottom: 1.5rem;
 }
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+#call-api-btn {
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    margin-top: 2rem;
+}
+
+textarea {
+    background-color: white;
+    margin-top: 2rem;
+    padding: 0.3rem;
+    border: 2px solid #2563eb;
+    border-radius: 0.3rem;
+}
