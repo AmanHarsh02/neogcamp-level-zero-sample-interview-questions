@@ -5,23 +5,30 @@ const outputDiv = document.querySelector("#api-response-div");
 const userStateUrl = "https://unitube-server.herokuapp.com/playlists";
 const pageAvailabilityUrl = "https://jsonplaceholder.typicode.com/dummyUsers";
 
-function errorHandler(error) {
+function loginErrorHandler(error) {
     console.log("Error Occured.", error);
-    alert("Something went wrong with server! Try again after some time.")
+    outputDiv.innerText = "Error: 401 - You are not logged in."
+}
+
+function pageErrorHandler(error) {
+    console.log("Error Occured.", error);
+    outputDiv.innerText = "Error: 404 - Page not found."
 }
 
 function fetchUserStateApiResponse() {
-    fetch(userStateUrl).then(response => response.json()).then(json => {
-        var apiResponse = json.message;
-        outputDiv.innerText = apiResponse;
-        console.log(json);
-    }).catch(errorHandler);
+    fetch(userStateUrl).then(response => { 
+        response.json()
+        if(response.status === 401) {
+            throw new Error(response.status);
+        } }).catch(loginErrorHandler);
 }
 
 function fetchPageAvailabilityApiResponse() {
-    fetch(pageAvailabilityUrl).then(response => response.json()).then(json => {
-        console.log(json);
-    }).catch(errorHandler);
+    fetch(pageAvailabilityUrl).then(response => { 
+        response.json()
+        if(response.status === 404) {
+            throw new Error(response.status);
+        } }).catch(pageErrorHandler);
 }
 
 function checkUserState() {
