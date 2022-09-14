@@ -41,6 +41,7 @@ a {
     padding: 0.3rem;
     border: 2px solid #2563eb;
     border-radius: 0.3rem;
+    outline: #fff;
 }
 
 #output {
@@ -80,4 +81,15 @@ textarea {
 
 #api-response-div {
     margin-top: 2rem;
+}
+
+#submit-btn {
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    margin-top: 2rem;
+}
+
+#password-strength {
+    margin-top: 0.5rem;
+    display: block;
 }
